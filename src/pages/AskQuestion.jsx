@@ -53,7 +53,7 @@ const AskQuestion = () => {
 
 
   return (
-    <div>
+    isAuthenticated() ? <div>
       <Header/>
       <br/><br/><br/>
       <div style={{padding:"25px"}}>
@@ -142,7 +142,7 @@ const AskQuestion = () => {
       </div>
     
       
-    </div>
+    </div>:<Navigate to={"/login"}/>
   )
 }
 
