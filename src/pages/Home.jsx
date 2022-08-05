@@ -1,10 +1,50 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React,{useState,useEffect} from 'react'
+import Header from '../components/Header'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+
+import Sidebar from '../components/Sidebar';
+import AllQuestions from '../components/AllQuestions';
+import Blog from '../components/Blog';
+import axios from 'axios';
+
+
 
 function Home() {
+
+  const [questions, setQuestions] = useState([]);
+
+    const getQuestion = async ()=>{
+        await axios.get("http://127.0.0.1:5000/api/questions").then((res) => {
+            setQuestions(res.data);
+            // console.log(res.data)
+        });
+    }
+
+    useEffect(() => {
+        // console.log("Hi")
+        getQuestion();
+    }, []);
+
   return (
     <div>
-      <Navbar/>
+      <Header/>
+      <br/>
+      <br/>
+      <br/>
+
+      <Row>
+        <Col lg={2} sm={12}>
+          <Sidebar/>
+        </Col>
+        <Col lg={7} sm={12}>
+          <AllQuestions questions={questions}/>
+        </Col>
+        <Col lg={3} sm={12}>
+          <Blog/>
+        </Col>
+      </Row>
     </div>
   )
 }
