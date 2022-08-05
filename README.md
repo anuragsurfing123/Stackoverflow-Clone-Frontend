@@ -1,5 +1,8 @@
-#live url
+# live url
 https://stately-gumdrop-13c206.netlify.app/
+or
+https://stackoverflow-clone-frontend.herokuapp.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
