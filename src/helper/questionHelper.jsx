@@ -1,5 +1,16 @@
 const API="http://127.0.0.1:5000/api"
 
+export const getAllQuestions = async (question_id) => {
+  return await fetch(`${API}/questions/${question_id}`, { method: "GET" })
+    .then(response => {
+      console.log(response)
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+
+
 
 export const questions = (data )=> {
     // console.log(token)

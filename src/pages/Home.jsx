@@ -35,13 +35,13 @@ function Home() {
       <br/>
 
       <Row>
-        <Col xs={2}>
+        <Col lg={2} sm={12}>
           <Sidebar/>
         </Col>
-        <Col xs={7}>
+        <Col lg={7} sm={12}>
           <AllQuestions questions={questions}/>
         </Col>
-        <Col xs={3}>
+        <Col lg={3} sm={12}>
           <Blog/>
         </Col>
       </Row>

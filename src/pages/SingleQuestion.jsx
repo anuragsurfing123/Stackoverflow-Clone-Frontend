@@ -19,19 +19,28 @@ const SingleQuestion=() =>{
 
     const [question, setQuestion] = useState('');
 
-    const getQuestion = async ()=>{
+    const getQuestion =  async ()=>{
         try{
-           const res = await axios.get("http://127.0.0.1:5000/api/questions/"+question_id)
-           console.log(res.data[0])
-
+           const res =  await axios.get("http://127.0.0.1:5000/api/questions/"+question_id)
            setQuestion(res.data[0])
 
         }catch (err) {}
         
     }
 
+    const updateViews = async ()=>{
+      try{
+        const res =  await axios.put("http://127.0.0.1:5000/api/questions/viewUpdate/"+question_id)
+        if(res){
+          // console.log("view updated")
+        }
+     }catch (err) {}
+
+    }
+
     useEffect(() => {
         getQuestion();
+        updateViews();
     }, []);
 
 
@@ -44,14 +53,14 @@ const SingleQuestion=() =>{
       <br/>
       <br/>
           <Row>
-            <Col xs={2}>
+            <Col lg={2} sm={12}>
               <Sidebar/>
             </Col>
-            <Col xs={7}>
+            <Col lg={7} sm={12}>
                 <Question question={question}/>
                 <Answer answerDetails={question.answerDetails} question_id={question._id}/>
             </Col>
-            <Col xs={3}>
+            <Col lg={3} sm={12}>
               <Blog/>
             </Col>
           </Row>

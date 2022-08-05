@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
 import { isAuthenticated } from '../helper/authHelper';
 import { answers } from '../helper/questionHelper';
-
+import swal from 'sweetalert';
 
 const Answer = ({answerDetails,question_id}) => {
     const[answer,setAnswer] = useState("")
@@ -19,15 +19,16 @@ const Answer = ({answerDetails,question_id}) => {
 
         const {email,username,accessToken}=isAuthenticated();
         answers({accessToken,finalData}).then((data)=>{
-            console.log(data)
+            swal("you have answered successfully")
+            window.location.reload()
         })
         
     }
   return (
     <Row>
-        <Col xs={2}>
+        <Col lg={2} sm={12}>
         </Col>
-        <Col xs={10}>
+        <Col lg={10} sm={12}>
             <div>
                 <h3>Answers</h3>
                 <hr/>
@@ -39,7 +40,7 @@ const Answer = ({answerDetails,question_id}) => {
                                 <div dangerouslySetInnerHTML={{__html:answer.answer}}></div>
                                 </Col>
                                 <Col xs={2}>
-                                <div>nn</div>
+                                <div></div>
                                 </Col>
                                 <hr/>
                             

@@ -9,7 +9,8 @@ import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
 import { isAuthenticated } from '../helper/authHelper';
 import { questions } from '../helper/questionHelper';
-
+import {Navigate} from "react-router-dom"
+import swal from 'sweetalert';
 
 
 
@@ -34,7 +35,15 @@ const AskQuestion = () => {
 
         const {email,username,accessToken}=isAuthenticated();
         questions({accessToken,finalData}).then((data)=>{
-            console.log(data)
+            swal("Question created successfully", "", "success");
+            setValue({
+                title: "",
+                tags: "",
+                error: "",
+            })
+
+            setRtvalue("");
+
         })
         
     }
@@ -52,7 +61,7 @@ const AskQuestion = () => {
             <h2>Ask a question</h2>
         </div>
         <Row>
-            <Col xs={8}>
+            <Col lg={8} sm={12}>
             <Form className='p-3 card'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label><br/>
@@ -90,7 +99,7 @@ const AskQuestion = () => {
 
             
             </Col>
-            <Col xs={4}>
+            <Col lg={4} sm={12}>
                 <Card style={{ width: '30rem' }}>
                 <Card.Header>Draft your question</Card.Header>
                     <Card.Body>
