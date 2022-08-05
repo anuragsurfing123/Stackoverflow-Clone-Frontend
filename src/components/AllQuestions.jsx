@@ -13,6 +13,7 @@ import {
     Link,
   } from "react-router-dom";
 import Moment from 'react-moment';
+import { isAuthenticated } from '../helper/authHelper';
 
 function AllQuestions({questions}) {
 
@@ -23,7 +24,7 @@ function AllQuestions({questions}) {
             <h3>All Questions</h3>
             </Col>
             <Col xs={6} sm={6} className="mr-1">
-            <Button variant="primary"><Link style={{textDecoration: "none",color:"white"}} to="/askquestion">Ask Question</Link> </Button>
+            {isAuthenticated()&&<Button variant="primary"><Link style={{textDecoration: "none",color:"white"}} to="/askquestion">Ask Question</Link> </Button>}
             </Col>     
         </Row>
         <Row className='mt-3'>

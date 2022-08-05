@@ -14,14 +14,14 @@ import Answer from '../components/Answer';
 
 
 const SingleQuestion=() =>{
+    const API_URL=process.env.REACT_APP_API_URL
     const location = useLocation();
     const question_id = location.pathname.split("/")[2];
 
     const [question, setQuestion] = useState('');
-
     const getQuestion =  async ()=>{
         try{
-           const res =  await axios.get("http://127.0.0.1:5000/api/questions/"+question_id)
+           const res =  await axios.get(API_URL+"/questions/"+question_id)
            setQuestion(res.data[0])
 
         }catch (err) {}
@@ -30,7 +30,7 @@ const SingleQuestion=() =>{
 
     const updateViews = async ()=>{
       try{
-        const res =  await axios.put("http://127.0.0.1:5000/api/questions/viewUpdate/"+question_id)
+        const res =  await axios.put(API_URL+"/questions/viewUpdate/"+question_id)
         if(res){
           // console.log("view updated")
         }
